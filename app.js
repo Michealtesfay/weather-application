@@ -6,8 +6,9 @@ app.set('view engine', 'ejs');
 
 //static lockfiles
 app.use(express.static('./public'));
-
-  http.get('http://api.openweathermap.org/data/2.5/forecast?q=London,GB&appid=c4bce5bf5e664247e5751880f1b9c19d&units=metric', function(response){
+let apiKey = '******************';
+let city = 'london';
+  http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city},GB&appid=${apiKey}&units=metric`, function(response){
 
     var info = "";
     response.on("data",function(chunk){
@@ -48,3 +49,4 @@ app.use(express.static('./public'));
 
     //listen to port
   app.listen(3000);
+
