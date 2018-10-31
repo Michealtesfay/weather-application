@@ -1,75 +1,111 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Weather App</title>
-<!--<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />-->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-    .row div{padding: 20px 10px; border: 10px solid white;}</style>
-    <div class="jumbotron jumbotron-fluid bg-info text-white" style="background: lightblue">
-      <div class="container">
-      <h1 class="display-2">London Weather</h1>
-      </div>
-    </div>
-
-  </head>
-  <body>
-
+    <title><%= datas.city %> Weather</title>
+    <body>
+      <div class="jumbotron jumbotron-fluid bg-info text-white" >
     <div class="container">
-      <div class="row">
-        <div class="col-sm-1">
-            <h1 class="display-1"> <%= Math.round(datas.temp) %> </h1>
-          </div>
-          <div class="col-sm-1">
-              <h2> &deg;C</h2>
-            </div>
-          <div class="col-sm-6">
-              <img src="image/rain.png" alt="rain" height="150" width="200">
-            </div>
-   </div>
-       <div class="row">
-        <div class="col-sm-6">
-       <h5><script type="text/javascript">
-            var d=new Date()
-            var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
-            "Friday","Saturday")
-          document.write( weekday[d.getDay()] + " Weather")
-        </script> </h5>
-       <p> Main: <%= datas.main %> </p>
-       <p>Pressure: <%= datas.pressure %> </p>
-       <p> Humidity: <%= datas.humidity %> </p>
-        </div>
-   </div>
-
-    <div class="row">
-      <div class="col-md-3 ">
-        <p> Date & Time: <%= datas.dt_txt2 %></p>
-        <p> Temperature: <%= datas.temp2 %> </p>
-        <p> Pressure: <%= datas.pressure2 %> </p>
-        <p> Humidity: <%= datas.humidity2 %> </p>
-      </div>
-      <div class="col-md-3 ">
-        <p> Date & Time: <%= datas.dt_txt3 %></p>
-        <p> Temperature: <%= datas.temp3 %> </p>
-        <p> Pressure: <%= datas.pressure3 %> </p>
-        <p> Humidity: <%= datas.humidity3 %> </p>
-      </div>
-      <div class="col-md-3 ">
-        <p> Date & Time: <%= datas.dt_txt4 %></p>
-        <p> Temperature: <%= datas.temp4 %> </p>
-        <p> Pressure: <%= datas.pressure4 %> </p>
-        <p> Humidity: <%= datas.humidity4 %> </p>
-      </div>
-      <div class="col-md-3 ">
-        <p> Date & Time: <%= datas.dt_txt5 %></p>
-        <p> Temperature: <%= datas.temp5 %> </p>
-        <p> Pressure: <%= datas.pressure5 %> </p>
-        <p> Humidity: <%= datas.humidity5 %> </p>
-      </div>
+    <h1 class="display-2"><%= datas.city %> Weather</h1>
     </div>
+  </div>
+
+  <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-1">
+              <h2 class="display-1"> <%= Math.round(datas.temp) %> </h2>
+            </div>
+            <div class="col-sm-1">
+                <h2> &deg;C</h2>
+                <img src="http://openweathermap.org/img/w/10d.png" alt="rain" height="70" width="70">
+              </div>
+          </div>
+         <div class="row">
+          <div class="col-sm-6">
+         <h5><script type="text/javascript">
+
+              var d=new Date()
+              var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+              "Friday","Saturday")
+            document.write( `${weekday[d.getDay()]}`);
+          </script> </h5>
+         <p> <%= datas.description %></p>
+         <p>Pressure: <%= datas.pressure %> </p>
+         <p> Humidity: <%= datas.humidity %> </p>
+          </div>
+
+     </div>
+     <div class="row">
+         <div class="col-md-3 ">
+           <img src="http://openweathermap.org/img/w/02d.png" alt="" height="70" width="70">
+           <script type="text/javascript">
+                var d=new Date()
+                var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                "Friday","Saturday")
+              document.write( `${weekday[d.getDay() + 1]}`);
+            </script>
+           <p id="description"><%= datas.description2 %></p>
+           <!-- <p> icon: <%= datas.iconS2 %> </p> -->
+           <p> Temperature: <%= datas.temp2 %> </p>
+           <p> Pressure: <%= datas.pressure2 %> </p>
+           <p> Humidity: <%= datas.humidity2 %> </p>
+         </div>
+
+         <div class="col-md-3 ">
+           <img src="http://openweathermap.org/img/w/10d.png" alt="" height="70" width="70">
+           <script type="text/javascript">
+                var d=new Date()
+                var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                "Friday","Saturday")
+              document.write( `${weekday[d.getDay() + 2]}`);
+            </script>
+           <!--<p> icon: <%= datas.iconS3 %><p> -->
+           <p id="description"> <%= datas.description3 %></p>
+           <p> Temperature: <%= datas.temp3 %> </p>
+           <p> Pressure: <%= datas.pressure3 %> </p>
+           <p> Humidity: <%= datas.humidity3 %> </p>
+         </div>
+
+         <div class="col-md-3 ">
+           <img src="http://openweathermap.org/img/w/01d.png" alt="" height="70" width="70">
+           <script type="text/javascript">
+                var d=new Date()
+                var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                "Friday","Saturday")
+              document.write( `${weekday[d.getDay() + 3]}`);
+            </script>
+           <!--<p> icon: <%= datas.iconS4 %><p> -->
+           <p id="description"> <%= datas.description4 %></p>
+           <p> Temperature: <%= datas.temp4 %> </p>
+           <p> Pressure: <%= datas.pressure4 %> </p>
+           <p> Humidity: <%= datas.humidity4 %> </p>
+         </div>
+
+         <div class="col-md-3 ">
+           <img src="http://openweathermap.org/img/w/10d.png" alt="" height="70" width="70">
+           <script type="text/javascript">
+                var d=new Date()
+                var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                "Friday","Saturday")
+              document.write( `${weekday[d.getDay() + 4]}`);
+            </script>
+          <!-- <p> icon: <%= datas.iconS5 %><p> -->
+           <p id="description"> <%= datas.description5 %></p>
+           <p> Temperature: <%= datas.temp5 %> </p>
+           <p> Pressure: <%= datas.pressure5 %> </p>
+           <p> Humidity: <%= datas.humidity5 %> </p>
+         </div>
+       </div>
+
+       <div class="footer">
+         <p>Copyright © 2018  - All Rights Reserved </p>
+         <p>Contact information: <a href="micheal4s@live.co.uk">micheal4s@live.co.uk</a>.</p>
+       </div>
+  </body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
